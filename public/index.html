@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Family Budget Planner</title>
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+<header><h1>Budget Planner</h1></header>
+<main>
+  <section class="card summary">
+    <div><small>Venituri</small><strong class="income" id="sum-income">0</strong></div>
+    <div><small>Cheltuieli</small><strong class="expense" id="sum-expenses">0</strong></div>
+    <div><small>Sold</small><strong id="sum-balance">0</strong></div>
+  </section>
+
+  <section class="card">
+    <h2>Adaugă tranzacție</h2>
+    <form id="form">
+      <label>Tip
+        <select name="type">
+          <option value="expense">Cheltuială</option>
+          <option value="income">Venit</option>
+        </select>
+      </label>
+      <label>Sumă (RON)
+        <input type="number" name="amount" step="0.01" min="0.01" required>
+      </label>
+      <label>Categorie
+        <input type="text" name="category" list="cats" placeholder="ex: Mâncare" required>
+        <datalist id="cats">
+          <option>Mâncare</option><option>Chirie</option><option>Transport</option>
+          <option>Facturi</option><option>Distracție</option><option>Salariu</option>
+        </datalist>
+      </label>
+      <label>Data
+        <input type="date" name="date" required>
+      </label>
+      <label class="full">Descriere
+        <input type="text" name="description" maxlength="200">
+      </label>
+      <label class="full">Bon (PNG, JPG sau PDF, max 5 MB)
+        <input type="file" name="receipt" accept=".png,.jpg,.jpeg,.pdf">
+      </label>
+      <button class="full" type="submit">Adaugă</button>
+      <div class="full" id="msg"></div>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>Cheltuieli pe categorii</h2>
+    <div id="categories"></div>
+  </section>
+
+  <section class="card">
+    <h2>Tranzacții</h2>
+    <table>
+      <thead><tr><th>Data</th><th>Categorie</th><th>Descriere</th><th>Sumă</th><th>Bon</th><th></th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </section>
+</main>
+
+<script src="index.js"></script>
+</body>
+</html>

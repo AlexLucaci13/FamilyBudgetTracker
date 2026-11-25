@@ -1,0 +1,162 @@
+:root {
+    --bg: #f5f6fa;
+    --card: #fff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --primary: #2563eb;
+    --green: #16a34a;
+    --red: #dc2626;
+    --border: #e5e7eb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+header {
+    background: var(--primary);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 16px;
+    display: grid;
+    gap: 16px;
+}
+
+.card {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+}
+
+.summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    text-align: center;
+}
+
+.summary small {
+    color: var(--muted);
+    display: block;
+}
+
+.summary strong {
+    font-size: 1.4rem;
+}
+
+.income {
+    color: var(--green);
+}
+
+.expense {
+    color: var(--red);
+}
+
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+form .full {
+    grid-column: 1 / -1;
+}
+
+label {
+    font-size: .85rem;
+    color: var(--muted);
+    display: grid;
+    gap: 4px;
+}
+
+input,
+select,
+button {
+    padding: 9px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font: inherit;
+}
+
+button {
+    background: var(--primary);
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+}
+
+button.del {
+    background: transparent;
+    color: var(--red);
+    padding: 4px 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .92rem;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid var(--border);
+}
+
+.bar-row {
+    display: grid;
+    grid-template-columns: 110px 1fr 90px;
+    gap: 8px;
+    align-items: center;
+    margin: 6px 0;
+    font-size: .9rem;
+}
+
+.bar {
+    background: var(--border);
+    border-radius: 4px;
+    height: 12px;
+    overflow: hidden;
+}
+
+.bar>span {
+    display: block;
+    height: 100%;
+    background: var(--primary);
+}
+
+#msg {
+    color: var(--red);
+    min-height: 1.2em;
+    font-size: .9rem;
+}
+
+@media (max-width: 600px) {
+    form {
+        grid-template-columns: 1fr;
+    }
+
+    .summary strong {
+        font-size: 1.1rem;
+    }
+}
