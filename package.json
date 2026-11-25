@@ -1,0 +1,17 @@
+{
+    "name": "budget-app",
+    "version": "1.0.0",
+    "description": "Aplicatie de budget planning cu Azure Blob Storage",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "engines": {
+      "node": ">=18"
+    },
+    "dependencies": {
+      "@azure/storage-blob": "^12.17.0",
+      "express": "^4.19.2",
+      "multer": "^1.4.5-lts.1"
+    }
+  }
