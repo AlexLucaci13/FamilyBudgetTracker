@@ -1,70 +1,90 @@
 <!DOCTYPE html>
-<html lang="ro">
-
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Family Budget Planner</title>
-<link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Family Budget Tracker</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-<header><h1>Budget Planner</h1></header>
-<main>
+  <header>
+    <h1>Budget Tracker</h1>
+  </header>
+  <main>
+    <section class="summary">
+      <div class="earnings">
+        <span>Earnings</span>
+        <strong id="all earnings">0.00 RON</strong>
+      </div>
+      <div class="spendings">
+        <span>Spending</span>
+        <strong id="all spendings">0.00 RON</strong>
+      </div>
+      <div class="Sold">
+        <span>Balance</span>
+        <strong id="all spendings">0.00 RON</strong>
+      </div>
+    </section>
 
-  <section class="card summary">
-    <div><small>Venituri</small><strong class="income" id="sum-income">0</strong></div>
-    <div><small>Cheltuieli</small><strong class="expense" id="sum-expenses">0</strong></div>
-    <div><small>Sold</small><strong id="sum-balance">0</strong></div>
-  </section>
+    <section class="card">
+      <h2>Add New Expense/Income</h2>
+      <form id="form">
+        <label>Type
+          <select name="type">
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+          </select>
+        </label>
+        <label>Amount (RON)
+          <input type="number" name="amount" step="1" min="0" required>
+        </label>
+        <label>Category
+          <input type="text" name="category" list="cats" placeholder="e.g., food, gas" required>
+          <datalist id="cats">
+            <option>Salary</option>
+            <option>Food</option>
+            <option>Rent</option>
+            <option>Gas</option>
+            <option>Bills</option>
+            <option>Entertainment</option>
+          </datalist>
+        </label>
+        <label>Date
+          <input type="date" name="date" required>
+        </label>
+        <label class="full">Short Description
+          <input type="text" name="description" maxlength="200" placeholder="e.g., a short description of the expense or income">
+        </label>
+        <label class="full">Receipt (PNG, JPG, PDF, max. 5 MB)
+          <input type="file" name="receipt" accept=".png,.jpg,.jpeg,.pdf">
+        </label>
+        <button class="full" type="submit">Add</button>
+        <div class="full" id="msg"></div>
+      </form>
+    </section>
 
-  <section class="card">
-    <h2>Adaugă tranzacție</h2>
-    <form id="form">
-      <label>Tip
-        <select name="type">
-          <option value="expense">Cheltuială</option>
-          <option value="income">Venit</option>
-        </select>
-      </label>
-      <label>Sumă (RON)
-        <input type="number" name="amount" step="0.01" min="0.01" required>
-      </label>
-      <label>Categorie
-        <input type="text" name="category" list="cats" placeholder="ex: Mâncare" required>
-        <datalist id="cats">
-          <option>Mâncare</option><option>Chirie</option><option>Transport</option>
-          <option>Facturi</option><option>Distracție</option><option>Salariu</option>
-        </datalist>
-      </label>
-      <label>Data
-        <input type="date" name="date" required>
-      </label>
-      <label class="full">Descriere
-        <input type="text" name="description" maxlength="200">
-      </label>
-      <label class="full">Bon (PNG, JPG sau PDF, max 5 MB)
-        <input type="file" name="receipt" accept=".png,.jpg,.jpeg,.pdf">
-      </label>
-      <button class="full" type="submit">Adaugă</button>
-      <div class="full" id="msg"></div>
-    </form>
-  </section>
+    <section class="card">
+      <h2>Spending by Category</h2>
+      <div id="categories"></div>
+    </section>
 
-  <section class="card">
-    <h2>Cheltuieli pe categorii</h2>
-    <div id="categories"></div>
-  </section>
-
-  <section class="card">
-    <h2>Tranzacții</h2>
-    <table>
-      <thead><tr><th>Data</th><th>Categorie</th><th>Descriere</th><th>Sumă</th><th>Bon</th><th></th></tr></thead>
-      <tbody id="rows"></tbody>
-    </table>
-  </section>
-</main>
-
-<script src="index.js"></script>
+    <section class="card">
+      <h2>Transactions</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Receipt</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </section>
+  </main>
+  <script src="app.js"></script>
 </body>
 </html>
