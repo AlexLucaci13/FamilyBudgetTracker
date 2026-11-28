@@ -7,5 +7,20 @@ const contaier = service.getBlobBatchClient(AZURE_STORAGE_CONTAINER || "receipts
 
 async function uploadReceipt(file)
 {
+    const name = "";
+    await ContainerClient.getBlockBlobClien(name).uploadData(file.buffer,{
+        blobHTTPHeaders : { blobContentType: file.mimetype}
+    });
+    return name;
+}
+
+async function downloadReceipt(name){
+    await ContainerClient.getBlockBlobClien(name).download();
 
 }
+
+async function deleteReceipt(name){
+    await ContainerClient.getBlockBlobClien(name).deleteIfExists();
+}
+
+module.exports = { uploadReceipt, downloadReceipt, deleteReceipt} ;

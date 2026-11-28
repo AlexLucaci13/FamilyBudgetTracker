@@ -1,10 +1,25 @@
-const express = require('express');
+//modules load:
+require("dotenv").config();
 
-//main object for the nodeJs app
+const express = require("express");
+const path = require("path");
+const multer = requre("multer");
+const { pool, createDB } = require("./db");
+const { uploadReceipt, downloadReceipt, deleteReceipt } = require("./db");
+
+//creating a server and assign a port
 const app = express();
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+const PORT = process.env.PORT || 3000;
 
+//upload function
+const upload = multer({
+  storage: multer.memoryStorage()
+});
+
+//permite citire de date in format json de la browser
+app.use(express.json());
+//send all the data from public to browser
+app.use(express.static(path.join(__driname,"..","public")));
 
 app.get('/api/transactions', wrap(async (res,req)=>{
     const data = await storage.loadBudget();
